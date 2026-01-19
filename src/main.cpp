@@ -1,6 +1,8 @@
 #include <iostream>
+#include <truth_table.hpp>
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    TruthTable t = TruthTable();
+    t.load("input/xor2.txt");
+    t.print();
 }
