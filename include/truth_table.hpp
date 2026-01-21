@@ -11,6 +11,7 @@ class TruthTable {
         std::vector<uint8_t> f; // output values, from 0 to 2^n - 1
     public:
         TruthTable();
+        TruthTable(int n, const std::vector<uint8_t>& f_values);
         void load(const std::string& filename);
 
         int getN() const {return n;}

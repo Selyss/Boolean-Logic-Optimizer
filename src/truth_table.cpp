@@ -1,8 +1,19 @@
 #include <truth_table.hpp>
 #include <fstream>
 #include <iostream>
+#include <stdexcept>
 
 TruthTable::TruthTable() : n(0), f() {};
+
+TruthTable::TruthTable(int n_value, const std::vector<uint8_t>& f_values) : n(n_value), f(f_values) {
+    int rows = 1 << n;
+    if (n < 1 || n > 6) {
+        throw std::runtime_error("Number of inputs n must be between 1 and 6.");
+    }
+    if (static_cast<int>(f.size()) != rows) {
+        throw std::runtime_error("Truth table size does not match 2^n.");
+    }
+}
 
 void TruthTable::load(const std::string& filename) {
     // open file
